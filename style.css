@@ -1,0 +1,124 @@
+table 
+{
+	width: 100%;
+	font: 17px Calibri;
+}
+table, th, td 
+{
+	border: solid 1px #DDD;
+	border-collapse: collapse;
+	padding: 2px 3px;
+	text-align: center;
+}
+
+#addForm{
+	display: table-row;
+	float:left;	
+	margin-bottom: 30px;
+	/*display:none;*/
+}
+
+#addForm div{
+	clear: both; 
+	text-align: right; 
+	line-height: 30px;
+	width: 450px;	
+}
+
+#addForm label{
+	padding-right: 15px;
+	padding-left: 25px;
+	font: 17px Calibri;
+	float: left; 
+	clear: both; 
+}
+
+#addForm div input{
+	padding: 0 15px 0 15px;
+	margin-bottom: 15px;
+	font: 17px Calibri;
+	border: 1px solid rgba(100, 100, 100, 0.4);
+	border-radius: 10px;
+	height: 27px;
+	width: 280px;
+}
+.btnForm{
+	float: right;
+	margin-left: 20px;
+	padding: 0 15px 0 15px;
+	width: 100px;
+	height: 27px;
+	font: 17px Calibri;
+	border: 1px solid rgba(100, 100, 100, 0.4);
+	border-radius: 10px;
+}
+.btnForm:hover{
+	box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+.form-group {
+	width: 95%;
+	margin: 0 auto;
+	padding: 15px 20px;
+	border-radius: 10px;
+	background: #efefef;
+}
+.group{
+	display: inline-block;
+	margin: 0 10px;
+}
+.form-group input,
+.selectOption {
+	height: 30px;
+	outline: none;
+	border: none;
+	border: 1px solid rgba(100, 100, 100, 0.4);
+	padding: 0 15px 0 15px;
+	border-radius: 10px;
+	font-weight: bolder;
+	letter-spacing: 0.1em;
+	text-align:left;
+}
+
+.form-group input:hover {
+	cursor: text;
+}
+.form-group input:focus {
+	cursor: text;
+}
+.form-group input:placeholder {
+	color: #ccc;
+	font-weight: bolder;
+	opacity: 0.7;
+}
+.selectOption{
+	cursor:pointer;
+}
+
+.sort{
+	width: 80px;
+	cursor:pointer;
+}
+.btn-go{
+	height: 28px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	background: #6d0;
+	padding: 0 15px 0 15px;  
+}
+.btn-go:hover{
+	box-shadow: inset 0 0 20px rgba(0,0,0,0.5);  
+}
+.btn-go-disabled{
+	box-shadow: none; 
+	height: 28px;
+	padding: 0 15px 0 15px;   
+}
+.btn-go-disabled:hover{
+	box-shadow: none;  
+}
+.btn-delete:hover{
+	box-shadow: inset 0 0 30px rgba(255,0,0,1);  
+}
+.btn-update:hover{
+	box-shadow: inset 0 0 30px rgba(0,0,255,1);  
+}
