@@ -1,5 +1,7 @@
 var requestURL='';
 var collums=[];
+var filterSelected='';
+var listSelected='';
 
 function loadData(data){
     var arrItems = [];      // THE ARRAY TO STORE JSON ITEMS.
@@ -32,11 +34,19 @@ function loadData(data){
         var th = document.createElement("th");      // TABLE HEADER.
         th.innerHTML = col[i];
         tr.appendChild(th);
-
-        var list_option = document.createElement("option");
-        var filter_option = document.createElement("option");
-        list_option.innerHTML = col[i];
-        filter_option.innerHTML = col[i];
+        
+        var list_option = new Option(col[i], col[i]);
+        if (filterSelected==col[i]){
+            var filter_option = new Option(col[i], col[i], true, true);
+        } else {
+            var filter_option = new Option(col[i], col[i]);
+        }
+        if (listSelected==col[i]){
+            var list_option = new Option(col[i], col[i], true, true);
+        } else {
+            var list_option = new Option(col[i], col[i]);
+        }
+        
         document.getElementById("list").appendChild(list_option);
         document.getElementById("filter").appendChild(filter_option);
     }
@@ -303,10 +313,16 @@ function searchData(){
         param[1] = 'q=' + formElements[2].value;
     }
     if ((formElements[1].value!='All')&&(formElements[2].value!='')){
-        param[2] =formElements[1].value + '_like=' + formElements[2].value;  
+        param[2] =formElements[1].value + '_like=' + formElements[2].value;
+        filterSelected=formElements[1].value;  
     }
-    if ((formElements[3].value!='--')&&(formElements[4].value!='--')){      
-        param[3] = '_sort=' + formElements[3].value + '&' + '_order=' + formElements[4].value;     
+    if (formElements[3].value!='--'){
+        param[3] = '_sort=' + formElements[3].value;
+        listSelected=formElements[3].value;
+        if (formElements[4].value!=''){
+            param[3] = param[3] + '&' + '_order=' + formElements[4].value;
+        }
+
     }
     for (var i = 0; i <= 3; i++) {
         if (param[i]){
@@ -317,6 +333,7 @@ function searchData(){
             }
         }        
     }
+    //alert(str);
     getData(str);
 }
 
