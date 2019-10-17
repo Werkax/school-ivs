@@ -1,3 +1,5 @@
-Task 1.1
+Task 1 Modul 1
+
 Morozova Valentina
-Школа разработчиков ИВС
+Ссылка на страницу https://werkax.github.io/school-ivs/
+Ссылка на репозиторий https://github.com/Werkax/school-ivs

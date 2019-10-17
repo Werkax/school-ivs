@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "c17c669e-e196-4b3b-9ad4-cb66441565a6",
+		"name": "First collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get invoices",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "01b2ab1d-c115-4df1-94a6-cf0f39b2cbf8",
+						"exec": [
+							"pm.test('Status code is 200', function(){",
+							"   pm.response.to.have.status(200); ",
+							"});",
+							"",
+							"pm.test('Invoises count is correct', function(){",
+							"   var jsonData=pm.response.json();",
+							"   pm.expect(jsonData.length).to.eql(10); ",
+							"   pm.environment.set(\"jsonDataCount\", jsonData.length);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://project-werkax1.herokuapp.com/invoices",
+					"protocol": "https",
+					"host": [
+						"project-werkax1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"invoices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create invoices",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9ed6c3a6-b320-4bdc-abcc-bc9b4134f9d5",
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});",
+							"",
+							"pm.test(\"Response body has correct id, direction, number\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(pm.variables.get(\"id\")).to.equal(jsonData.id);",
+							"    pm.expect(\"8ad47368-b85b-4b25-a209-9a0000000000\").to.equal(jsonData.direction);",
+							"    pm.expect(50000).to.equal(jsonData.number);",
+							"});",
+							"",
+							"pm.test('Invoises count is correct', function(){",
+							"    pm.sendRequest(\"https://project-werkax1.herokuapp.com/invoices\", function (err, response) {",
+							"        console.log(pm.environment.get(\"jsonDataCount\"));",
+							"        var jsonData=response.json();",
+							"        pm.expect(jsonData.length).to.eql(pm.environment.get(\"jsonDataCount\")+1);",
+							"        pm.environment.set(\"jsonDataCount\", jsonData.length);",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "56dfedb5-b153-4a20-b9b1-a46b00ba9905",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n    \"id\": \"{{id}}\",\r\n    \"direction\": \"8ad47368-b85b-4b25-a209-9a0000000000\",\r\n    \"number\": 50000,\r\n    \"date_created\": \"07 May 1900\",\r\n    \"date_due\": \"10 August 2000\",\r\n    \"date_supply\": \"20 May 2000\",\r\n    \"comment\": \"Officia 0000000000.\"\r\n  }"
+				},
+				"url": {
+					"raw": "https://project-werkax1.herokuapp.com/invoices",
+					"protocol": "https",
+					"host": [
+						"project-werkax1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"invoices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update invoices",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b86beb17-f0ae-4bc3-aeac-47c500e499bc",
+						"exec": [
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response body has correct id\", function () {",
+							"    pm.response.to.have.jsonBody('id', pm.variables.get(\"id\"));",
+							"});",
+							"",
+							"pm.test(\"Response body has correct data\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.direction).to.eql(\"1234567890\");",
+							"    pm.expect(jsonData.number).to.eql(51111);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n    \"id\": \"{{id}}\",\r\n    \"direction\": \"1234567890\",\r\n    \"number\": 51111,\r\n    \"date_created\": \"07 May 1911\",\r\n    \"date_due\": \"11 August 2011\",\r\n    \"date_supply\": \"21 May 2011\",\r\n    \"comment\": \"Officia 11111111.\"\r\n  }"
+				},
+				"url": {
+					"raw": "https://project-werkax1.herokuapp.com/invoices/{{id}}",
+					"protocol": "https",
+					"host": [
+						"project-werkax1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"invoices",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete invoices",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7b9daba1-d992-4f09-af84-123ca8902d74",
+						"exec": [
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test('Invoise has deleted Status code name has string', function(){",
+							"    pm.sendRequest(\"https://project-werkax1.herokuapp.com/invoices/\" + pm.environment.get(\"id\"), function (err, response) {",
+							"        console.log(response.json());",
+							"        console.log(response.json().length);",
+							"    });",
+							"});",
+							"",
+							"pm.test('Invoises count has updated', function(){",
+							"    pm.sendRequest(\"https://project-werkax1.herokuapp.com/invoices\", function (err, response) {",
+							"        var jsonData=response.json();",
+							"        pm.expect(jsonData.length).to.eql(pm.environment.get(\"jsonDataCount\")-1);",
+							"        pm.environment.set(\"jsonDataCount\", jsonData.length);",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9e793f9f-81cc-4c20-8c8d-71e830a949c8",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://project-werkax1.herokuapp.com/invoices/{{id}}",
+					"protocol": "https",
+					"host": [
+						"project-werkax1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"invoices",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
