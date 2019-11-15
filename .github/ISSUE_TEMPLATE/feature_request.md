@@ -7,16 +7,16 @@ assignees: ''
 
 ---
 
-**Purpose**
+### Purpose
 A clear and concise description of what you want to happen when feature will be implemented.
 
-**Functional requirements**
+### Functional requirements
 Description of the functionality & services should be implemented.
 
 1. Implement '...'
 2. Check '...'
 3. Etc.
 
-**Implementation requirements**
+### Implementation requirements
 
 Any technical details about how the feature should be implemented.
