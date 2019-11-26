@@ -119,6 +119,13 @@ table, th, td
 .btn-delete:hover{
 	box-shadow: inset 0 0 30px rgba(255,0,0,1);  
 }
+.btn-update,
+.btn-delete{
+	width: 60px;  
+}
+.btn-update{
+	margin-bottom: 10px;  
+}
 .btn-update:hover{
 	box-shadow: inset 0 0 30px rgba(0,0,255,1);  
 }

@@ -50,6 +50,9 @@ function loadData(data){
         document.getElementById("list").appendChild(list_option);
         document.getElementById("filter").appendChild(filter_option);
     }
+    var th = document.createElement("th"); 
+    th.innerHTML = "update/ delete";
+    tr.appendChild(th);
     // ADD JSON DATA TO THE TABLE AS ROWS.
     for (var i = 0; i < arrItems.length; i++) {
         tr = table.insertRow(-1);
@@ -68,8 +71,6 @@ function loadData(data){
         btUpdate.setAttribute('onclick', 'createForm(this)');   
         td.appendChild(btUpdate);
             // *** DELETE.
-        td = document.createElement('td');
-        tr.appendChild(td);
         var btDelete = document.createElement('input');
         btDelete.setAttribute('type', 'button');  
         btDelete.setAttribute('value', 'Delete');
