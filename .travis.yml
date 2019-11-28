@@ -13,3 +13,4 @@ before_script:
 
 script:
   - node_modules/.bin/newman run FirstCollection/FirstCollection.postman_collection.json -e FirstCollection/Test.env.postman_environment.json 
+  - node_modules/.bin/newman run SecondCollection/SecondCollection.postman_collection.json -e SecondCollection/Filter.env.postman_environment.json -d SecondCollection/test.json
