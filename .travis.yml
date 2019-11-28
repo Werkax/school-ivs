@@ -7,4 +7,4 @@ before_install:
   - npm install -g newman
 
 script:
-  - newman run FirstCollection\FirstCollection.postman_collection.json -e FirstCollection\Test.env.postman_environment.json 
+  - newman run FirstCollection\FirstCollection.postman_collection.json -e Test.env.postman_environment.json 
