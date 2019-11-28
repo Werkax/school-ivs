@@ -1,0 +1,10 @@
+language: node_js
+
+node_js:
+  - "6"
+
+before_install:
+  - npm install -g newman
+
+script:
+  - npx newman run FirstCollection\FirstCollection.postman_collection.json -e FirstCollection\Test.env.postman_environment.json 
