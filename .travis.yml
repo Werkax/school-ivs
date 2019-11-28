@@ -3,8 +3,14 @@ language: node_js
 node_js:
   - "6"
 
-before_install:
-  - npm install -g newman
+install:
+- npm install newman
+
+before_script:
+- node --version
+- npm --version
+- node_modules/.bin/newman --version
 
 script:
-  - newman run FirstCollection\FirstCollection.postman_collection.json -e Test.env.postman_environment.json 
+  - newmnode_modules/.bin/newman run FirstCollection/FirstCollection.postman_collection.json -e FirstCollection/Test.env.postman_environment.json 
+  
