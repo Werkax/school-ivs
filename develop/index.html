@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CRUDapp (JS, Json-Server)</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script defer src="getDataJSON.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <p>Data extracted from a JSON and converted to an HTML table.</p>
+    <input type='button' id='btn-add' value="New Item" onclick='createForm("");' class='btn-go'>
+    
+    <br><br>
+    <form class="form-group" id="myForm">
+        <div class="group">
+            <label for="search">Search: </label>
+            <input name="q" type="text" placeholder="Search">
+        </div>
+        <div class="group">
+            <label>Filter by: </label>
+            <select class="selectOption" name="selectFilter" id="filter">
+                <!-- <option value="All">All</option>  --> 
+            </select>
+            <span>=</span>
+            <input name="filter" type="text" placeholder="Filter">
+        </div>
+        <div class="group">
+            <label>Order by: </label>
+            <select name="_sort" class="selectOption" id="list">
+                <!-- <option value="">--</option> -->  
+            </select>
+            <select name="_order" class="selectOption sort" id="#">
+                <option value="">--</option>
+                <option value="asc">Asc</option>
+                <option value="desc">Desc</option>
+            </select>
+        </div>
+        <input type='button' value="Go" onclick='searchData();' class='btn-go'>   
+    </form>
+    <br>  
+    <form id="addForm">
+    </form>
+    <br>
+    <div id="showData"></div>
+
+</body>
+
+ 
+<!--<script src="getDataJSON.js"></script> <script defer src="go.js"></script>
+-->
+
+</html>
