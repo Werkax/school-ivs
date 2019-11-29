@@ -40,12 +40,12 @@ then
     cd ..
 
     # Prevent "empty" commit and build failure.
-    #if [ -f ".gitkeep" ]
-    #then
-    #  rm -rf .gitkeep
-    #else
-    #  touch .gitkeep
-    #fi
+    if [ -f "geetkip.html" ]
+    then
+      rm -rf geetkip.html
+    else
+      touch geetkip.html
+    fi
 
     # Configure git.
     git config user.name "werkax"
