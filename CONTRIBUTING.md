@@ -1,9 +1,4 @@
 # Contributing to JS-JSON-REST-API
-We want to make contributing to this project as easy and transparent as
-possible.
-
-## Code of Conduct
-Help us keep JS-JSON-REST-API project open and inclusive. Please read and follow our [Code of Conduct](https://github.com/Werkax/school-ivs/blob/master/CODE_OF_CONDUCT.md).
 
 ## Our Development Process
 We use GitHub to sync code to and from our internal repository. We'll use GitHub
@@ -31,8 +26,7 @@ We actively welcome your pull requests.
 4. If you've added code that should be tested, add tests.
 5. If you've changed APIs, update the documentation.
 6. Ensure the test suite passes.
-7. Make sure your code lints. See [Coding style](#coding-style) section.
-8. Create pull request with link to corresponding issue.
+7. Create pull request with link to corresponding issue.
 
 ## Commit Message Format
 Your commit messages should meet the [Conventional Commmits specification](https://www.conventionalcommits.org).
